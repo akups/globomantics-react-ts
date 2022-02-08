@@ -50,3 +50,12 @@ export function AuthProvider({ children }: Props) {
     </Provider>
   );
 }
+
+export function useAuthContext() {
+  const context = React.useContext(AuthContext);
+  if (context === undefined) {
+    //handle
+    throw new Error("useContext should be used within the AuthProvider.");
+  }
+  return context;
+}
